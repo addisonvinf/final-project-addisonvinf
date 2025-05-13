@@ -3,7 +3,7 @@ from timedinput import timedinput
 import random
 from pyfiglet import Figlet
 
-# class for Slime enemy
+# enemy class
 class Slime:
     species = "Slime"
     def __init__(self, level: int):
@@ -13,6 +13,7 @@ class Slime:
         self.atkspeed = level * 1
         self.value = 5
 
+# enemy class
 class Skeleton:
     species = "Skeleton"
     def __init__(self, level: int):
@@ -22,6 +23,7 @@ class Skeleton:
         self.atkspeed = level * 2
         self.value = 6
 
+# boss class
 class Boss_SlimeQueen:
     species = "Slime Queen"
     def __init__(self, level: int):
@@ -31,6 +33,7 @@ class Boss_SlimeQueen:
         self.atkspeed = level * 1
         self.value = 11
 
+# boss class
 class Boss_SkeletonKing:
     species = "Skeleton King"
     def __init__(self, level: int):
@@ -40,8 +43,7 @@ class Boss_SkeletonKing:
         self.atkspeed = level * 4
         self.value = 12
 
-
-# class for Player character
+# class for Player
 class Player:
     species = "Human"
     def __init__(self):
@@ -50,8 +52,6 @@ class Player:
         self.defense = 1
         self.atkspeed = 1
         self.gold = 0
-
-
 
 
 def main():
@@ -74,7 +74,7 @@ def main():
             exit()
 
 
-# initializes tutorial
+# begins floor 1 dungeon
 def floor1():
     player1 = Player()
     print("Welcome to the castle level 1.\n")
@@ -111,8 +111,7 @@ def floor1():
     player1 = blacksmith(player1)
 
 
-
-
+# menu called when it is the user's turn to act in a battle
 def battle_menu():
     battle_menu = {}
     battle_menu["[A]"]="Attack"
@@ -134,7 +133,7 @@ def battle_menu():
             pass
 
 
-# floor1 battle loop
+# battle loop for floor 1 battles
 def floor1_battle(player1):
     enemy_pool = ["Slime", "Skeleton"]
     enemy = random.choice(enemy_pool)
@@ -147,7 +146,7 @@ def floor1_battle(player1):
     print("")
     time.sleep(2)
 
-    # Room 1 - Battle loopL
+    # loop continues battle until enemy1 is dead
     while enemy1.hp > 0:
         print(f"{enemy1.species}: {enemy1.hp} HP")
         print(f"Your HP: {player.hp} HP")
@@ -196,7 +195,7 @@ def floor1_battle(player1):
                 game_over()
 
 
-        # if player atk speed is higher, you act first
+        # if player atk speed is higher, the user acts first
         elif enemy1.atkspeed <= player.atkspeed:
             while True:
                 selection = battle_menu()
@@ -220,9 +219,6 @@ def floor1_battle(player1):
             if enemy1.hp < 0:
                 break
 
-            # checks if enemy is dead; if so, breaks the loop
-
-
             print(f"The {enemy1.species} prepares to attack you...")
             time.sleep(2)
             print("")
@@ -242,6 +238,7 @@ def floor1_battle(player1):
     time.sleep(2)
     return player
 
+# battle loop for boss rooms
 def boss_battle(player1):
     boss_pool = ["Slime Queen", "Skeleton King"]
     boss = random.choice(boss_pool)
@@ -325,9 +322,6 @@ def boss_battle(player1):
             if boss1.hp < 0:
                 break
 
-            # checks if enemy is dead; if so, breaks the loop
-
-
             print(f"The {boss1.species} prepares to attack you...")
             time.sleep(2)
             print("")
@@ -348,6 +342,7 @@ def boss_battle(player1):
     time.sleep(2)
     return player
 
+# shop menu and loop for shop rooms
 def floor1_shop(player1):
 
     shop_menu = {}
@@ -402,6 +397,7 @@ def floor1_shop(player1):
     return player
 
 
+# shop loop and menu after boss fight
 def blacksmith(player1):
 
     shop_menu = {}
@@ -464,7 +460,7 @@ def enemy_damage(enemy_atk, player_hp):
     return player_hp
 
 
-# qte when a slime attacks the player
+# qte when an enemy attacks the player
 def qte(enemy):
     enemy_type = enemy
 
@@ -508,7 +504,7 @@ def qte(enemy):
         time.sleep(2)
         return "hit"
 
-
+# qte when a boss attacks the player
 def boss_qte(boss):
     boss_type = boss
 
@@ -556,6 +552,7 @@ def boss_qte(boss):
         time.sleep(2)
         return "hit"
 
+# exits the program when user's HP reaches 0
 def game_over():
     print("")
     print("You died :(")
