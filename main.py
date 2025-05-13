@@ -1,7 +1,6 @@
 import time
 from timedinput import timedinput
 import random
-from threading import Timer
 from pyfiglet import Figlet
 
 # class for Slime enemy
@@ -55,66 +54,58 @@ class Player:
 
 
 
-def main_menu():
+def main():
     font = Figlet(font="cricket")
     print(font.renderText("Type Castle",))
     print("****************************************************************")
     main_menu = {}
     main_menu["[1]"]="Play"
-    main_menu["[2]"]="Tutorial"
-    main_menu["[3]"]="Exit"
+    main_menu["[2]"]="Exit"
     while True:
         options = main_menu.keys()
         for entry in options:
             print(entry, main_menu[entry])
+        print("")
         selection = input("Action: ")
         if selection == "1":
             floor1()
             break
         elif selection == "2":
-            tutorial()
-            pass
-        elif selection == "3":
             exit()
 
 
 # initializes tutorial
 def floor1():
     player1 = Player()
-    print("Welcome to the castle level 1.")
+    print("Welcome to the castle level 1.\n")
     time.sleep(2)
 
     print("Floor 1 - Room 1")
-    print("*****************")
-    print("")
+    print("***************** \n")
     time.sleep(2)
 
     player1 = floor1_battle(player1)
 
     print("Floor 1 - Room 2 - Shop")
-    print("*****************")
-    print("")
+    print("************************ \n")
     time.sleep(2)
 
     player1 = floor1_shop(player1)
 
     print("Floor 1 - Room 3 - Battle")
-    print("*****************")
-    print("")
+    print("************************** \n")
     time.sleep(2)
 
     player1 = floor1_battle(player1)
 
     print("Floor 1 - Boss Battle")
-    print("*****************")
-    print("")
+    print("********************** \n")
     time.sleep(2)
 
     player1 = boss_battle(player1)
 
     print("Floor 1 - Blacksmith")
-    print("*****************")
-    print("")
+    print("********************* \n")
     time.sleep(2)
 
     player1 = blacksmith(player1)
@@ -122,7 +113,6 @@ def floor1():
 
 
 
-# tutorial menu; allows user to perform different actions
 def battle_menu():
     battle_menu = {}
     battle_menu["[A]"]="Attack"
@@ -132,6 +122,7 @@ def battle_menu():
         options = battle_menu.keys()
         for entry in options:
             print(entry, battle_menu[entry])
+        print("")
         selection = input("Action: ")
         if selection == "A":
             return "Attack"
@@ -143,7 +134,7 @@ def battle_menu():
             pass
 
 
-# tutorial battle loop
+# floor1 battle loop
 def floor1_battle(player1):
     enemy_pool = ["Slime", "Skeleton"]
     enemy = random.choice(enemy_pool)
@@ -379,14 +370,14 @@ def floor1_shop(player1):
         for entry in options:
             print(entry, shop_menu[entry])
 
-
+        print("")
         selection = input("Purchase: ")
         if selection == "1":
             if player.gold >= 2:
                 player.hp += 2
                 player.gold -= 2
             else:
-                print("Not enough gold.")
+                print("Not enough gold. \n")
 
         elif selection == "2":
             if player.gold >= 3:
@@ -544,7 +535,7 @@ def boss_qte(boss):
         prompt = random.choice(skeletonking_prompts)
         print(f"{prompt}")
 
-    answer = timedinput("Input : ", timeout=5, default="Times up!")
+    answer = timedinput("Input: ", timeout=5, default="Times up!")
     answer = answer.strip()
     if answer == prompt:
         print("")
@@ -572,8 +563,7 @@ def game_over():
     time.sleep(3)
     exit()
 
-def tutorial():
 
 
-main_menu()
+main()
 
