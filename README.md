@@ -5,7 +5,7 @@
 - Push or Sync to submit your work!
 
 
-
+# Type Castle - Terminal Game
 * For my final project, I decided to make a text-based, turn-based RPG 'roguelite' terminal game. 
 
 * Gameplay features:
