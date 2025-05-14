@@ -182,6 +182,11 @@ def floor1_battle(player1):
                         print("")
                         time.sleep(2)
                         break
+                if selection == "Defend":
+                    print("\nYou guarded yourself. \n")
+                    player.hp += 2
+                    time.sleep(2)
+                    break
                 if selection == "Stats":
                     print(f"{enemy1.species} \nHP: {enemy1.hp} \nATK: {enemy1.attack} \nATK SPD: {enemy1.atkspeed}")
                     print("")
@@ -209,6 +214,11 @@ def floor1_battle(player1):
                         print("")
                         time.sleep(2)
                         break
+                if selection == "Defend":
+                    print("\nYou guarded yourself. \n")
+                    player.hp += 2
+                    time.sleep(2)
+                    break
                 if selection == "Stats":
                     print(f"{enemy1.species} \nHP: {enemy1.hp} \nATK: {enemy1.attack} \nATK SPD: {enemy1.atkspeed}")
                     print("")
@@ -234,7 +244,7 @@ def floor1_battle(player1):
         game_over()
 
     player.gold = player.gold + enemy1.value
-    print(f"Congratualations! You defeated the {enemy1.species}!")
+    print(f"Congratualations! You defeated the {enemy1.species}! \n")
     time.sleep(2)
     return player
 
@@ -285,6 +295,11 @@ def boss_battle(player1):
                         print("")
                         time.sleep(2)
                         break
+                if selection == "Defend":
+                    print("\nYou guarded yourself. \n")
+                    player.hp += 2
+                    time.sleep(2)
+                    break
                 if selection == "Stats":
                     print(f"{boss1.species} \nHP: {boss1.hp} \nATK: {boss1.attack} \nATK SPD: {boss1.atkspeed}")
                     print("")
@@ -312,6 +327,11 @@ def boss_battle(player1):
                         print("")
                         time.sleep(2)
                         break
+                if selection == "Defend":
+                    print("\nYou guarded yourself. \n")
+                    player.hp += 2
+                    time.sleep(2)
+                    break
                 if selection == "Stats":
                     print(f"{boss1.species} \nHP: {boss1.hp} \nATK: {boss1.attack} \nATK SPD: {boss1.atkspeed}")
                     print("")
