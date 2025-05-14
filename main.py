@@ -456,22 +456,19 @@ def blacksmith(player1):
 
         selection = input("Purchase: ")
         if selection == "1":
-            if player.gold >= 2:
-                player.hp += 2
-                player.gold -= 2
+            if player.gold >= 8:
+                player.gold -= 9
             else:
                 print("Not enough gold.")
 
         elif selection == "2":
-            if player.gold >= 3:
-                player.atkspeed += 1
-                player.gold -= 3
+            if player.gold >= 14:
+                player.gold -= 14
             else:
                 print("Not enough gold.")
         elif selection == "3":
-            if player.gold >= 3:
-                player.atk += 1
-                player.gold -= 3
+            if player.gold >= 20:
+                player.gold -= 20
             else:
                 print("Not enough gold.")
         elif selection == "4":
