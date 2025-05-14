@@ -11,7 +11,7 @@
 ## Game Features
 * Game Features:
   - Working menus
-  - Battle loop
+  - Combat system
   - Linear dungeon map
   - Shop system
   - Typing quick-time-events
