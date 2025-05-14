@@ -5,16 +5,19 @@
 - Push or Sync to submit your work!
 
 
-# Type Castle - Terminal Game
-* For my final project, I decided to make a text-based, turn-based RPG 'roguelite' terminal game. 
+## Type Castle - Terminal Game
+* For my final project, I decided to make a text-based, turn-based RPG 'roguelite' terminal game. After learning about Object-Oriented Programming, I thought that Classes would be a useful tool for creating games that have different types of enemies with different stats and behaviors. With that in mind, I had the idea to create a turn-based RPG with roguelite elements, meaning playthroughs should vary from run to run. While thinking about different turn-based RPGs and how to implement a similar battle system, I realized that I actually haven't played a lot of RPGs. But from the few (one) I did play (Mario & Luigi Paper Jam), I remembered how much I enjoyed the parry system, making the typical gameplay loop more active and interesting. And so, I made it another goal to implement some kind of quick-time-event/ dodge mechanic into the gameplay.
 
-* Gameplay features:
+## Game Features
+* Game Features:
   - Working menus
   - Battle loop
-  - Linear dungeon progression
+  - Linear dungeon map
   - Shop system
   - Typing quick-time-events
   - Randomized enemies and boss fights
+ 
+## Gameplay
 
 * The main gameplay loop consists of the player entering a "Floor," that contains multiple enemy encounters, shops, and then a boss fight at the end.
 
