@@ -142,6 +142,7 @@ def floor1_battle(player1):
     elif enemy == "Skeleton":
         enemy1 = Skeleton(1)
     player = player1
+    selection = "Start"
     print(f"Watch out! You bumped into a {enemy1.species} and entered battle!")
     print("")
     time.sleep(2)
@@ -159,8 +160,7 @@ def floor1_battle(player1):
             time.sleep(2)
             print("")
             got_hit = qte(enemy1.species)
-            if got_hit == "hit":
-                player.hp = enemy_damage(enemy1.attack, player.hp)
+            player.hp = taken_dmg(got_hit, selection, player.hp, enemy1.attack)
             if player.hp < 0:
                 break
             else:
@@ -184,7 +184,6 @@ def floor1_battle(player1):
                         break
                 if selection == "Defend":
                     print("\nYou guarded yourself. \n")
-                    player.hp += 2
                     time.sleep(2)
                     break
                 if selection == "Stats":
@@ -196,8 +195,8 @@ def floor1_battle(player1):
             if enemy1.hp < 0:
                 break
 
-            if player.hp < 0:
-                game_over()
+        if player.hp < 0:
+            break
 
 
         # if player atk speed is higher, the user acts first
@@ -216,7 +215,6 @@ def floor1_battle(player1):
                         break
                 if selection == "Defend":
                     print("\nYou guarded yourself. \n")
-                    player.hp += 2
                     time.sleep(2)
                     break
                 if selection == "Stats":
@@ -233,8 +231,7 @@ def floor1_battle(player1):
             time.sleep(2)
             print("")
             got_hit = qte(enemy1.species)
-            if got_hit == "hit":
-                player.hp = enemy_damage(enemy1.attack, player.hp)
+            player.hp = taken_dmg(got_hit, selection, player.hp, enemy1.attack)
             if player.hp < 0:
                 break
             else:
@@ -272,8 +269,7 @@ def boss_battle(player1):
             time.sleep(2)
             print("")
             got_hit = boss_qte(boss1.species)
-            if got_hit == "hit":
-                player.hp = enemy_damage(boss1.attack, player.hp)
+            player.hp = taken_dmg(got_hit, selection, player.hp, boss1.attack)
             if player.hp < 0:
                 break
             else:
@@ -297,7 +293,6 @@ def boss_battle(player1):
                         break
                 if selection == "Defend":
                     print("\nYou guarded yourself. \n")
-                    player.hp += 2
                     time.sleep(2)
                     break
                 if selection == "Stats":
@@ -329,7 +324,6 @@ def boss_battle(player1):
                         break
                 if selection == "Defend":
                     print("\nYou guarded yourself. \n")
-                    player.hp += 2
                     time.sleep(2)
                     break
                 if selection == "Stats":
@@ -346,8 +340,7 @@ def boss_battle(player1):
             time.sleep(2)
             print("")
             got_hit = qte(boss1.species)
-            if got_hit == "hit":
-                player.hp = enemy_damage(boss1.attack, player.hp)
+            player.hp = taken_dmg(got_hit, selection, player.hp, boss1.attack)
             if player.hp < 0:
                 break
             else:
@@ -475,8 +468,11 @@ def blacksmith(player1):
 
 
 # if qte is failed, calculates damage taken and returns players new hp
-def enemy_damage(enemy_atk, player_hp):
-    player_hp = player_hp - enemy_atk
+def enemy_damage(enemy_atk, player_hp, defended):
+    if defended == "No":
+        player_hp = player_hp - enemy_atk
+    if defended == "Yes":
+        player_hp = player_hp - (enemy_atk - 1)
     return player_hp
 
 
@@ -572,6 +568,17 @@ def boss_qte(boss):
         time.sleep(2)
         return "hit"
 
+
+# checks if Player defended, calculates resulting player HP
+def taken_dmg(got_hit, selection, hp, enemy_atk):
+    if got_hit == "hit" and selection == "Defend":
+        hp = enemy_damage(enemy_atk, hp, "Yes")
+    if got_hit == "hit" and selection != "Defend":
+        hp = enemy_damage(enemy_atk, hp, "No")
+    if got_hit == "dodged" and selection == "Defend":
+        pass
+    return hp
+
 # exits the program when user's HP reaches 0
 def game_over():
     print("")
@@ -579,6 +586,8 @@ def game_over():
     print("")
     time.sleep(3)
     exit()
+
+
 
 
 
